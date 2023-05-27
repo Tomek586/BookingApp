@@ -34,7 +34,7 @@ namespace BookingApp
             string conn = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={FilePath};Integrated Security=True;Connect Timeout=30;";
             SqlConnection con = new SqlConnection(conn);
         }
-        private void Login_btt_click()
+        private void Login_btt_click(object sender, RoutedEventArgs e)
         {
             try
             {
