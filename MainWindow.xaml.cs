@@ -39,9 +39,11 @@ namespace BookingApp
 
         }
 
-        private void Button_click()
+        private void Button_click(object sender, RoutedEventArgs e)
         {
-
+            Register r1 = new Register();
+            this.Close();
+            r1.Show();
         }
-        }
+    }
 }

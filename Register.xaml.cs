@@ -23,5 +23,9 @@ namespace BookingApp
         {
             InitializeComponent();
         }
+        private void Register_btt_click()
+        {
+
+        }
     }
 }
