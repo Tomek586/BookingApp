@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingApp"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="800">
+        Title="Register" Height="470" Width="800">
     <Grid>
-        
+
+        <Border Height="390" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" Margin="0,1,0,0" Grid.RowSpan="2">
+            <TextBlock TextWrapping="Wrap" Text="Register Page" FontSize="50" Foreground="white" Margin="10,10,444,302"/>
+        </Border>
+        <TextBlock Text="User Login" Margin="254,86,254,292" Foreground="White" TextAlignment="Center" FontSize="38" RenderTransformOrigin="0.494,0.485"/>
+        <TextBox HorizontalAlignment="Center" x:Name="username" Margin="0,147,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="148" Height="28"/>
+        <TextBlock TextWrapping="Wrap" Text="Password" Foreground="White" Margin="294,180,294,190" FontSize="38"  TextAlignment="Center"/>
+        <PasswordBox HorizontalAlignment="Center" x:Name="password"   Margin="0,230,0,0"   VerticalAlignment="Top" Width="148" Height="28"/>
+        <Button  BorderThickness="2" BorderBrush="#D94448" Background="#D94448" Click="Register_btt_click" Foreground="White"  x:Name="Register_Btt" Content="Register" Margin="350,294,350,113"/>
+
     </Grid>
 </Window>
