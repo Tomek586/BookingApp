@@ -30,7 +30,7 @@ namespace BookingApp
         {
             try
             {
-                string FileName = "ConcertsBookings.mdf";
+                string FileName = "Booking.mdf";
                 string CurrentDirectory = Directory.GetCurrentDirectory();
                 string ProjectDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
                 string FilePath = Path.Combine(ProjectDirectory, FileName);
@@ -40,7 +40,7 @@ namespace BookingApp
 
 
                 con.Open();
-                string add_data = "INSERT into [dbo].[logins] values('',@username, @password) ";
+                string add_data = "INSERT into [dbo].[logins] values(@username, @password) ";
                 SqlCommand cmd = new SqlCommand(add_data, con);
 
 
@@ -59,6 +59,9 @@ namespace BookingApp
             {
 
             }
+           
         }
+
+       
     }
 }
