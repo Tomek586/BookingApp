@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BookingApp" Height="470" Width="800">
     <Grid>
+
+        <Border Height="434" VerticalAlignment="Center" CornerRadius="0 0 180 0" Background="#100E17">
+            <TextBlock TextWrapping="Wrap" Text="Login Page" FontSize="50" Foreground="white" Margin="10,10,522,302"/>
+        </Border>
+        <TextBlock Text="User Login" Margin="254,79,254,312" Foreground="White" TextAlignment="Center" FontSize="38" FontFamily="Great Vibes" RenderTransformOrigin="0.494,0.485"/>
+        <TextBox HorizontalAlignment="Center" x:Name="txtUsername" Margin="0,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="148" Height="28"/>
+        <TextBlock TextWrapping="Wrap" Text="Password" Foreground="White" Margin="294,180,294,209" FontSize="38" FontFamily="Great Vibes" TextAlignment="Center" RenderTransformOrigin="0.533,0.067"/>
+        <PasswordBox HorizontalAlignment="Center" x:Name="txtPassword"   Margin="0,230,0,0"   VerticalAlignment="Top" Width="148" Height="28"/>
+        <Button  BorderThickness="2" BorderBrush="#D94448" Background="#D94448" Foreground="White" ToolTip="Login" x:Name="Login_btt" Click="Login_btt_click" Content="Login" Margin="350,283,350,124"/>
+        <Button  BorderThickness="2" BorderBrush="#D94448" Background="#D94448" Foreground="White" ToolTip="Register" x:Name="Register_btt" Click="Button_click" Content="Register" Margin="350,334,350,73"/>
+
+
 
     </Grid>
 </Window>
