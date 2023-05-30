@@ -48,12 +48,30 @@ namespace BookingApp
 
 
                 con.Open();
+                
                 string add_data = "Select * from [dbo].[logins] where username=@username and password=@password ";
-                SqlCommand cmd = new SqlCommand(add_data, con);
+                string add_data2 = "select login_id from [dbo].[logins] where username=@username and password=@password ";
+               
 
+                SqlCommand cmd = new SqlCommand(add_data, con);
+                SqlCommand cmd2 = new SqlCommand(add_data2, con);
+                List<int> userId = new List<int>();
+
+                cmd2.Parameters.AddWithValue("@username", txtUsername.Text);
+                cmd2.Parameters.AddWithValue("@password", txtPassword.Password);
+                SqlDataReader reader = cmd2.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    userId.Add(reader.GetInt32(0));
+                }
+                reader.Close();
+
+                int c = userId[0];
 
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@password", txtPassword.Password);
+
                 cmd.ExecuteNonQuery();
                 int Count = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
@@ -62,7 +80,8 @@ namespace BookingApp
                 txtPassword.Password = "";
                 if (Count > 0)
                 {
-                    UserPanel u1 = new UserPanel();
+
+                    UserPanel u1 = new UserPanel(c);
                     this.Close();
                     u1.Show();
 

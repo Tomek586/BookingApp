@@ -7,7 +7,22 @@
         mc:Ignorable="d"
         Title="UserPanel" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="Events" ItemsSource="{Binding}"></DataGrid>
+        <DataGrid x:Name="concertsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,0,400,217">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding ConcertDate}" />
+                <DataGridTextColumn Header="Artist" Binding="{Binding ArtistName}" />
+                <DataGridTextColumn Header="Venue" Binding="{Binding Venue}" />
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Buy Ticket" Click="BuyTicket_Click" Tag="{Binding ConcertId}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock TextWrapping="Wrap" Name="welcome" Foreground="Black" Margin="423,0,0,81"/>
+
 
     </Grid>
 </Window>
