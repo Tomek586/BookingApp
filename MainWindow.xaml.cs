@@ -38,7 +38,7 @@ namespace BookingApp
         {
             try
             {
-                string FileName = "ConcertsBookings.mdf";
+                string FileName = "Booking.mdf";
                 string CurrentDirectory = Directory.GetCurrentDirectory();
                 string ProjectDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
                 string FilePath = Path.Combine(ProjectDirectory, FileName);
@@ -69,7 +69,7 @@ namespace BookingApp
                 }
                 else
                 {
-                    MessageBox.Show("chujoza");
+                    MessageBox.Show("zły login lub hasło");
                 }
 
 
