@@ -47,7 +47,8 @@ namespace BookingApp
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT  c.concert_name, c.concert_date, c.venue, b.booking_date FROM concerts c JOIN bookings b ON c.concert_id = b.concert_id WHERE b.login_id = @UserId", con);
+                SqlCommand cmd = new SqlCommand("SELECT  c.concert_name, c.concert_date, c.venue, b.booking_date FROM concerts c JOIN bookings b ON" +
+                    " c.concert_id = b.concert_id WHERE b.login_id = @UserId", con);
                 cmd.Parameters.AddWithValue("@UserId", c);
 
                 DataTable dt = new DataTable();
@@ -61,7 +62,10 @@ namespace BookingApp
             {
                 con.Open();
 
-                SqlCommand cmd2 = new SqlCommand("SELECT DISTINCT a.artist_name FROM artists a JOIN concerts c ON a.artist_id = c.artist_id WHERE DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE())   AND DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE()) OR DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE()) + 1   AND DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE());", con);
+                SqlCommand cmd2 = new SqlCommand("SELECT DISTINCT a.artist_name FROM artists a JOIN concerts c ON a.artist_id = c.artist_id WHERE " +
+                    "DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE())   AND " +
+                    "DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE()) OR DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE()) + 1   " +
+                    "AND DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE());", con);
 
                 SqlDataReader reader = cmd2.ExecuteReader();
 
