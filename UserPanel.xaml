@@ -8,11 +8,9 @@
         Title="UserPanel" Height="450" Width="800">
     
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="IMG/konc.jpg"/>
-        </Grid.Background>
+        
 
-        <DataGrid x:Name="concertsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,86,430,108">
+        <DataGrid x:Name="concertsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,86,430,200">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding ConcertDate}" />
                 <DataGridTextColumn Header="Artist" Binding="{Binding ArtistName}" />
@@ -20,16 +18,17 @@
                 <DataGridTemplateColumn Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Buy Ticket" Click="BuyTicket_Click" Tag="{Binding ConcertId}" />
+                            <Button Content="Buy Ticket" Click="BuyTicket_Click" Tag="{Binding ConcertName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock TextWrapping="Wrap" Name="welcome" Foreground="Black" Margin="235,317,188,26"/>
-        <DataGrid d:ItemsSource="{Binding}" Name="userEvents" Margin="470,86,0,141"/>
+        <DataGrid d:ItemsSource="{Binding}" Name="userEvents" Margin="470,86,0,200"/>
         <TextBlock TextWrapping="Wrap" Text="Nadchodzące wydarzenia!" TextAlignment="Center" FontSize="30" Margin="0,10,430,353"/>
-        <ListBox x:Name="artistsListBox" Margin="470,298,0,0" />
+        <ListBox x:Name="artistsListBox" Margin="5,363,430,0" />
+        <TextBlock TextWrapping="Wrap" Text="Najgliższe koncerty zagrają dla was:" TextAlignment="Center" FontSize="30" Margin="0,239,430,100"/>
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="30" Margin="470,10,0,368"><Run Language="pl-pl" Text="Twoje bilety:"/></TextBlock>
 
 
 

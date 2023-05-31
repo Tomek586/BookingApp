@@ -35,7 +35,7 @@ namespace BookingApp
             
             this.c = c;
 
-            welcome.Text = $"Witaj {c}  ";
+            
 
             string FileName = "Booking.mdf";
             string CurrentDirectory = Directory.GetCurrentDirectory();
@@ -61,7 +61,7 @@ namespace BookingApp
             {
                 con.Open();
 
-                SqlCommand cmd2 = new SqlCommand("SELECT DISTINCT a.artist_name FROM artists a JOIN concerts c ON a.artist_id = c.artist_id", con);
+                SqlCommand cmd2 = new SqlCommand("SELECT DISTINCT a.artist_name FROM artists a JOIN concerts c ON a.artist_id = c.artist_id WHERE DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE())   AND DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE()) OR DATEPART(MONTH, c.concert_date) = DATEPART(MONTH, GETDATE()) + 1   AND DATEPART(YEAR, c.concert_date) = DATEPART(YEAR, GETDATE());", con);
 
                 SqlDataReader reader = cmd2.ExecuteReader();
 
@@ -121,7 +121,7 @@ namespace BookingApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Błąd! ");
             }
         }
 
@@ -150,7 +150,7 @@ namespace BookingApp
 
             int rowsAffected = command.ExecuteNonQuery();
 
-            MessageBox.Show("Ticket for concert with ID " + concertId + " purchased!");
+            MessageBox.Show("Bilet na wydarzenie o numerze:   " + concertId + "  został zakupiony!");
         }
 
 
