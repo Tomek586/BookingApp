@@ -47,14 +47,36 @@ namespace BookingApp
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT c.concert_id, c.concert_name, c.concert_date, c.venue FROM concerts c JOIN bookings b ON c.concert_id = b.concert_id WHERE b.login_id = @UserId", con);
+                SqlCommand cmd = new SqlCommand("SELECT  c.concert_name, c.concert_date, c.venue, b.booking_date FROM concerts c JOIN bookings b ON c.concert_id = b.concert_id WHERE b.login_id = @UserId", con);
                 cmd.Parameters.AddWithValue("@UserId", c);
 
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
 
                 userEvents.ItemsSource = dt.DefaultView;
+
+                con.Close();
             }
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                con.Open();
+
+                SqlCommand cmd2 = new SqlCommand("SELECT DISTINCT a.artist_name FROM artists a JOIN concerts c ON a.artist_id = c.artist_id", con);
+
+                SqlDataReader reader = cmd2.ExecuteReader();
+
+                List<string> artists = new List<string>();
+
+                while (reader.Read())
+                {
+                    string artistName = reader.GetString(reader.GetOrdinal("artist_name"));
+                    artists.Add(artistName);
+                }
+
+                artistsListBox.ItemsSource = artists;
+            }
+
+
 
         }
         
