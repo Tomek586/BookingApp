@@ -51,7 +51,7 @@ namespace BookingApp
                 
                 string add_data = "Select * from [dbo].[logins] where username=@username and password=@password ";
                 string add_data2 = "select login_id from [dbo].[logins] where username=@username and password=@password ";
-               
+             
 
                 SqlCommand cmd = new SqlCommand(add_data, con);
                 SqlCommand cmd2 = new SqlCommand(add_data2, con);

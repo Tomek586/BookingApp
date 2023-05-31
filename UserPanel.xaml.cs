@@ -30,13 +30,36 @@ namespace BookingApp
             InitializeComponent();
 
             LoadConcerts();
+
+
+            
             this.c = c;
 
             welcome.Text = $"Witaj {c}  ";
 
+            string FileName = "Booking.mdf";
+            string CurrentDirectory = Directory.GetCurrentDirectory();
+            string ProjectDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(CurrentDirectory).FullName).FullName).FullName;
+            string FilePath = Path.Combine(ProjectDirectory, FileName);
+
+            string conn = $"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={FilePath};Integrated Security=True;Connect Timeout=30;";
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT c.concert_id, c.concert_name, c.concert_date, c.venue FROM concerts c JOIN bookings b ON c.concert_id = b.concert_id WHERE b.login_id = @UserId", con);
+                cmd.Parameters.AddWithValue("@UserId", c);
+
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
+
+                userEvents.ItemsSource = dt.DefaultView;
+            }
+
         }
-        private void LoadConcerts()
-        {
+        
+            private void LoadConcerts()
+            {
             try
             {
                 string FileName = "Booking.mdf";
@@ -107,6 +130,8 @@ namespace BookingApp
 
             MessageBox.Show("Ticket for concert with ID " + concertId + " purchased!");
         }
+
+
     }
 
     public class Concert
@@ -124,6 +149,7 @@ namespace BookingApp
             Venue = venue;
         }
     }
+    
 
 
 
