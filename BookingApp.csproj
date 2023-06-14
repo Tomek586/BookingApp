@@ -8,12 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="aaa.jpg" />
     <None Remove="img\konc.jpg" />
+    <None Remove="koncert.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="aaa.jpg" />
+    <Resource Include="koncert.jpg" />
   </ItemGroup>
 
 </Project>

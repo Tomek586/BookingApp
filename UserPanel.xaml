@@ -5,12 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookingApp"
         mc:Ignorable="d"
-        Title="UserPanel" Height="450" Width="800">
+        Title="BookingApp" ResizeMode="NoResize" Height="450" Width="800" WindowStartupLocation="CenterScreen" Cursor="Arrow" FontFamily="Tw Cen MT Condensed Extra Bold">
 
     <Grid>
-        <Border Height="362" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17" Margin="0,1,0,0"/>
+        <Border Height="433" VerticalAlignment="Center" >
+            <Border.Background>
+                <ImageBrush ImageSource="/aaa.jpg"/>
+            </Border.Background>
+        </Border>
 
-        <DataGrid x:Name="concertsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,86,430,200">
+        <DataGrid Background="Transparent" RowBackground="Transparent" x:Name="concertsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,86,430,0" BorderBrush="Black" Foreground="Black" Height="153" VerticalAlignment="Top">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0,0,0,2" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Padding="4">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding ConcertDate}" />
                 <DataGridTextColumn Header="Artist" Binding="{Binding ArtistName}" />
@@ -18,15 +46,42 @@
                 <DataGridTemplateColumn Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Buy Ticket" Click="BuyTicket_Click" Tag="{Binding ConcertName}" />
+                            <Button Content="Buy Ticket" Click="BuyTicket_Click" Tag="{Binding ConcertId}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid d:ItemsSource="{Binding}" Name="userEvents" Margin="470,86,0,200"/>
+
+
+        <DataGrid d:ItemsSource="{Binding}" Name="userEvents" Margin="470,86,0,200" Background="Transparent" RowBackground="Transparent" BorderBrush="Black" Foreground="Black" VerticalAlignment="Top">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="0,0,0,2" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Padding="4">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
         <TextBlock TextWrapping="Wrap" Foreground="White"  Text="Nadchodzące wydarzenia!" TextAlignment="Center" FontSize="30" Margin="0,10,430,353"/>
-        <ListBox x:Name="artistsListBox" Margin="5,363,430,0" />
+        <ListBox  Background="Transparent" x:Name="artistsListBox" Margin="5,363,430,0" Foreground="White" BorderBrush="Black" />
         <TextBlock TextWrapping="Wrap" Foreground="White"  Text="Najgliższe koncerty zagrają dla was:" TextAlignment="Center" FontSize="30" Margin="0,239,430,100"/>
         <TextBlock TextWrapping="Wrap" Foreground="White" TextAlignment="Center" FontSize="30" Margin="470,10,0,368"><Run Language="pl-pl" Text="Twoje bilety:"/></TextBlock>
 

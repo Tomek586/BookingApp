@@ -78,6 +78,7 @@ namespace BookingApp
                 }
 
                 artistsListBox.ItemsSource = artists;
+                con.Close();
             }
 
 
@@ -134,7 +135,6 @@ namespace BookingApp
             Button buyTicketButton = (Button)sender;
             int concertId = (int)buyTicketButton.Tag;
 
-            
 
             string FileName = "Booking.mdf";
             string CurrentDirectory = Directory.GetCurrentDirectory();
@@ -154,7 +154,12 @@ namespace BookingApp
 
             int rowsAffected = command.ExecuteNonQuery();
 
+            
             MessageBox.Show("Bilet na wydarzenie o numerze:   " + concertId + "  został zakupiony!");
+
+            UserPanel okno1 = new UserPanel(c);
+            okno1.Show();
+            this.Close();
         }
 
 
@@ -175,6 +180,7 @@ namespace BookingApp
             Venue = venue;
         }
     }
+
     
 
 
